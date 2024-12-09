@@ -1,0 +1,10 @@
+- import_tasks: preq.yaml
+- import_tasks: install.yaml
+
+- block:
+  - name: Verifying if apache status
+    command: systemctl status httpd
+    register: httpd_service
+  when: ansible_distribution == "CentOS"
+
+

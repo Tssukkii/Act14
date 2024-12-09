@@ -1,0 +1,16 @@
+- name: Creating keystone database
+  mysql_query:
+    login_user: root
+    login_password: mysqlpass
+    login_unix_socket: /var/lib/mysql/mysql.sock   
+    query: 
+      - CREATE DATABASE keystone;
+      - GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'localhost' IDENTIFIE>
+      - GRANT ALL PRIVILEGES ON keystone.* TO 'keystone'@'%' IDENTIFIED BY 'ke>
+    single_transaction: yes
+  failed_when: false
+  no_log: true
+  when: ansible_distribution == "CentOS"
+
+
+
